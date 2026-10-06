@@ -47,11 +47,15 @@ nav .links a:hover { color: var(--accent-deep); }
 nav .lang { margin-left: 1.4rem; font-size: 0.9rem; color: var(--muted); }
 nav .lang a { margin: 0 0.15rem; }
 nav .lang a.active { color: var(--ink); font-weight: 700; }
+/* Mobile: brand on top, links in one horizontally scrollable row (keeps the sticky nav short). */
 @media (max-width: 720px) {
-  nav { flex-direction: column; gap: 0.45rem; padding: 0.7rem 1rem 0.65rem; }
-  nav .links { justify-content: center; gap: 0.2rem 1rem; }
-  nav .links a { margin-left: 0; font-size: 0.86rem; }
-  nav .lang { margin-left: 0; }
+  nav { flex-direction: column; align-items: stretch; gap: 0.3rem; padding: 0.55rem 1rem 0.45rem; }
+  nav .brand { justify-content: center; }
+  nav .links { flex-wrap: nowrap; overflow-x: auto; gap: 1.1rem; justify-content: flex-start; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch; mask-image: linear-gradient(90deg, #000 88%, transparent); padding-bottom: 2px; }
+  nav .links::-webkit-scrollbar { display: none; }
+  nav .links a, nav .lang { margin-left: 0; font-size: 0.86rem; white-space: nowrap; flex: 0 0 auto; }
+  @media (min-width: 420px) { nav .links { justify-content: center; mask-image: none; } }
 }
 
 .hero { max-width: 1080px; margin: 0 auto; padding: 4.2rem 1.5rem 0; text-align: center; }

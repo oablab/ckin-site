@@ -229,3 +229,7 @@ article .quote { border-left: 4px solid var(--accent); background: var(--card); 
 article .quote p { margin: 0.3rem 0; font-size: 0.98rem; }
 article .pull { font-size: 1.25rem; font-weight: 800; text-align: center; margin: 2rem 0; color: var(--accent-deep); text-wrap: balance; }
 article .note-cta { text-align: center; margin: 2.6rem 0 1rem; }
+article figure { margin: 0 0 1.8rem; }
+article figure.hero-photo { margin: 0.4rem 0 2rem; }
+article figure img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); display: block; }
+article figcaption { color: var(--muted); font-size: 0.88rem; margin-top: 0.6rem; text-align: center; }

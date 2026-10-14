@@ -62,4 +62,13 @@ writeFileSync('en/og.png', render(og({
   title: ['Alley flavours,', 'one shop at a time.'], size: 62, subSize: 27,
   sub: ['Loved by thousands.', 'Only counts if you were there.'],
 }), 1200));
+// Dev-note OG cards: <slug> → zh/notes/<slug>/og.png
+const NOTES = {
+  'why-ckin': { kicker: 'ckin 開發筆記 #1', title: ['那碗我從沒吃過的', '家鄉味'],
+    sub: ['最珍貴的味道，原來一直在自己長大的地方。', '不是美食指南，是一個親自走進去的理由。'] },
+};
+for (const [slug, t] of Object.entries(NOTES)) {
+  mkdirSync(`zh/notes/${slug}`, { recursive: true });
+  writeFileSync(`zh/notes/${slug}/og.png`, render(og(t), 1200));
+}
 console.log('images written');

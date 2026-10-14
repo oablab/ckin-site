@@ -1,26 +1,26 @@
 /* ckin — shared site styles. Layout conventions follow odimeet.app / foldic.app. */
 :root {
-  --accent: #D9480F;        /* 辣椒紅 */
-  --accent-deep: #B23A0B;
-  --accent-tint: #FDEBDD;
-  --ink: #2B1D14;
-  --muted: #7A6556;
-  --bg: #FFF9F3;
-  --card: #FBEFE4;
-  --border: rgba(178, 58, 11, 0.16);
-  --shadow: 0 24px 80px rgba(43, 29, 20, 0.18);
+  --accent: #A0703F;        /* 茶湯棕 */
+  --accent-deep: #8B5E34;
+  --accent-tint: #F1E6D8;
+  --ink: #2B1F14;
+  --muted: #75655A;
+  --bg: #FAF6F0;
+  --card: #F3EBE0;
+  --border: rgba(139, 94, 52, 0.18);
+  --shadow: 0 24px 80px rgba(43, 31, 20, 0.16);
   --done: #15803d; --todo: #dc2626; --visited: #9caf88; --closing: #d97706;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --accent: #FF7A3D;
-    --accent-deep: #FF9A66;
-    --accent-tint: #3A2116;
-    --ink: #F3EAE2;
-    --muted: #B9A595;
-    --bg: #17110D;
-    --card: #221913;
-    --border: rgba(255, 122, 61, 0.22);
+    --accent: #C9955F;
+    --accent-deep: #DDB07E;
+    --accent-tint: #33271B;
+    --ink: #F1EAE1;
+    --muted: #B3A392;
+    --bg: #151110;
+    --card: #1F1915;
+    --border: rgba(201, 149, 95, 0.22);
     --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
   }
 }
@@ -185,10 +185,10 @@ section.faq { max-width: 720px; margin: 0 auto; padding: 4.2rem 1.5rem 2rem; }
 .bottom-cta h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 1.4rem; }
 .cta {
   display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-deep); color: #fff; border-radius: 12px;
-  padding: 0.9rem 1.6rem; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 6px 20px rgba(178, 58, 11, 0.3);
+  padding: 0.9rem 1.6rem; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 6px 20px rgba(139, 94, 52, 0.3);
 }
 .cta:hover { background: var(--accent); }
-@media (prefers-color-scheme: dark) { .cta { color: #17110D; } }
+@media (prefers-color-scheme: dark) { .cta { color: #151110; } }
 
 footer { border-top: 1px solid var(--border); padding: 2.2rem 1.5rem; text-align: center; color: var(--muted); font-size: 0.88rem; }
 footer a, nav .lang a { color: var(--accent-deep); text-decoration: none; margin: 0 0.2rem; }

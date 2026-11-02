@@ -69,10 +69,11 @@ html[lang="en"] .hero h1 { font-family: "New York", Georgia, "Times New Roman", 
 .hero p.sub { color: var(--muted); font-size: 1.14rem; max-width: 640px; margin: 1.2rem auto 0; }
 .hero-cta { margin-top: 1.8rem; }
 /* Map CTA + App Store badge side by side, wrapping on narrow screens.
-   Badge: Apple artwork unmodified, 48px tall (Apple min 40px), gap ≥ ¼ badge height of clear space. */
+   Badge: Apple artwork unmodified, scaled to the .cta button's height (padding 2 × 0.9rem + one
+   1rem line ≈ 55–57px; 48px fallback, Apple min 40px), gap ≥ ¼ badge height of clear space. */
 .cta-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; }
-.appstore { display: inline-block; line-height: 0; }
-.appstore img { height: 48px; width: auto; display: block; }
+.appstore { display: inline-flex; vertical-align: middle; }
+.appstore img { font-size: 1rem; height: 48px; height: calc(1.8rem + 1lh); width: auto; display: block; }
 .badge {
   display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.2rem;
   font-size: 0.88rem; font-weight: 600; color: var(--accent-deep);

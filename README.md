@@ -5,6 +5,7 @@ Marketing site for [ckin](https://ckin.cc), the Taiwan snack check-in map — se
 - `/` — 繁體中文 (default), `/en/` — English, `/privacy/` — privacy policy
 - Plain static HTML + `site.css`; no build step.
 - `scripts/gen-images.mjs` regenerates `icon.png`, `favicon.png`, `apple-touch-icon.png`, `og.png`, `en/og.png`
+  from the iOS app icon `scripts/app-icon.png`
   (needs a folder with `@resvg/resvg-js` and Noto Sans TC `.otf` files: `node scripts/gen-images.mjs <dir>`).
 
 The app itself (Cloudflare Worker + D1) lives at `ckin.cc`.

@@ -1,26 +1,26 @@
 /* ckin — shared site styles. Layout conventions follow odimeet.app / foldic.app. */
 :root {
-  --accent: #A0703F;        /* 茶湯棕 */
-  --accent-deep: #8B5E34;
-  --accent-tint: #F1E6D8;
+  --accent: #4F7024;        /* app icon green, lighter and more olive than --done */
+  --accent-deep: #275913;   /* app icon green, sampled from the iOS icon */
+  --accent-tint: #E5ECD6;
   --ink: #2B1F14;
   --muted: #75655A;
   --bg: #FAF6F0;
   --card: #F3EBE0;
-  --border: rgba(139, 94, 52, 0.18);
+  --border: rgba(39, 89, 19, 0.18);
   --shadow: 0 24px 80px rgba(43, 31, 20, 0.16);
   --done: #15803d; --todo: #dc2626; --visited: #9caf88; --closing: #d97706;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --accent: #C9955F;
-    --accent-deep: #DDB07E;
-    --accent-tint: #33271B;
+    --accent: #8DB56B;
+    --accent-deep: #A9CB8C;
+    --accent-tint: #1F2A18;
     --ink: #F1EAE1;
     --muted: #B3A392;
     --bg: #151110;
     --card: #1F1915;
-    --border: rgba(201, 149, 95, 0.22);
+    --border: rgba(141, 181, 107, 0.22);
     --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
   }
 }
@@ -40,7 +40,7 @@ nav {
   backdrop-filter: saturate(180%) blur(16px); background: color-mix(in srgb, var(--bg) 78%, transparent);
 }
 nav .brand { display: flex; align-items: center; gap: 0.55rem; font-weight: 800; font-size: 1.1rem; text-decoration: none; color: var(--ink); }
-nav .brand img { width: 28px; height: 28px; border-radius: 7px; }
+nav .brand img { width: 28px; height: 28px; border-radius: 22.37%; }
 nav .links { display: flex; align-items: center; flex-wrap: wrap; }
 nav .links a { color: var(--muted); text-decoration: none; margin-left: 1.4rem; font-size: 0.92rem; }
 nav .links a:hover { color: var(--accent-deep); }
@@ -59,7 +59,7 @@ nav .lang a.active { color: var(--ink); font-weight: 700; }
 }
 
 .hero { max-width: 1080px; margin: 0 auto; padding: 4.2rem 1.5rem 0; text-align: center; }
-.hero .app-icon { width: 108px; height: 108px; border-radius: 24px; box-shadow: 0 12px 36px rgba(43, 29, 20, 0.25); margin-bottom: 1.6rem; }
+.hero .app-icon { width: 108px; height: 108px; border-radius: 22.37%; box-shadow: 0 12px 36px rgba(43, 29, 20, 0.25); margin-bottom: 1.6rem; }
 .hero h1 { font-size: clamp(2.3rem, 7vw, 3.6rem); line-height: 1.22; font-weight: 900; max-width: 860px; margin: 0 auto; text-wrap: balance; }
 html[lang="en"] .hero h1 { font-family: "New York", Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: -0.02em; }
 .hero h1 em {
@@ -220,7 +220,7 @@ section.faq { max-width: 720px; margin: 0 auto; padding: 4.2rem 1.5rem 2rem; }
 .bottom-cta h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 1.4rem; }
 .cta {
   display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-deep); color: #fff; border-radius: 12px;
-  padding: 0.9rem 1.6rem; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 6px 20px rgba(139, 94, 52, 0.3);
+  padding: 0.9rem 1.6rem; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 6px 20px rgba(39, 89, 19, 0.3);
 }
 .cta:hover { background: var(--accent); }
 @media (prefers-color-scheme: dark) { .cta { color: #151110; } }

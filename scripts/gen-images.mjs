@@ -1,4 +1,4 @@
-// Generates icon.png (324), favicon.png (64), apple-touch-icon.png (180), og.png (zh), en/og.png and dev-note OG cards.
+// Generates icon.png (324), favicon.png (64), apple-touch-icon.png (180), og.png (zh), en/og.png and dev-note OG cards (zh and en).
 // Usage: node scripts/gen-images.mjs <dir with @resvg/resvg-js and NotoSansTC-*.otf>
 // The logo is the iOS app icon, scripts/app-icon.png (full-bleed, 1254×1254); every size is
 // rendered from it here. Palette: icon green #275913 on cream, map pins in the map's own colours.
@@ -81,13 +81,17 @@ writeFileSync('en/og.png', render(og({
   title: ['Local eats,', 'one shop at a time.'], size: 62, subSize: 27,
   sub: ['Only counts if you were there.', 'Taipei, New Taipei, Keelung, Yilan, New York'],
 }), 1200));
-// Dev-note OG cards: <slug> → zh/notes/<slug>/og.png
+// Dev-note OG cards: <lang>/notes/<slug> → <lang>/notes/<slug>/og.png
 const NOTES = {
-  'why-ckin': { kicker: 'ckin 開發筆記 #1', title: ['那碗我從沒吃過的', '家鄉味'],
+  'zh/notes/why-ckin': { kicker: 'ckin 開發筆記 #1', title: ['那碗我從沒吃過的', '家鄉味'],
     sub: ['最珍貴的味道，原來一直在自己長大的地方。', '不是美食指南，是一個親自走進去的理由。'] },
+  'zh/notes/around-you': { kicker: 'ckin 開發筆記 #2', title: ['打開就是', '你附近'],
+    sub: ['地圖以你為中心，打卡紀錄切到 Threads，', '也能從 Google 地圖分享地點過來。'] },
+  'en/notes/around-you': { kicker: 'ckin dev notes #2', title: ['Open it', 'where you are'], size: 70, subSize: 27,
+    sub: ['Centered on you or on a place shared from', 'Google Maps. Past check-ins open in Threads.'] },
 };
-for (const [slug, t] of Object.entries(NOTES)) {
-  mkdirSync(`zh/notes/${slug}`, { recursive: true });
-  writeFileSync(`zh/notes/${slug}/og.png`, render(og(t), 1200));
+for (const [dir, t] of Object.entries(NOTES)) {
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(`${dir}/og.png`, render(og(t), 1200));
 }
 console.log('images written');

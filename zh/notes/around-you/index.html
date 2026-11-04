@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>打開就是你附近：ckin 1.0.1 和 1.0.2 的三個改進 — ckin 開發筆記</title>
+  <meta name="description" content="ckin iOS 1.0.1 和 1.0.2 的三個改進：打開 app 地圖就以你的位置為中心；看之前的打卡紀錄直接切到 Threads app；在 Google 地圖找到想去的地點，分享給 ckin，就能看到那附近的打卡店家。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="打開就是你附近：ckin 1.0.1 和 1.0.2 的三個改進">
+  <meta property="og:description" content="地圖以你為中心、打卡紀錄切到 Threads app、從 Google 地圖分享地點給 ckin，看看那附近有哪些打卡店家。">
+  <meta property="og:url" content="https://www.ckin.cc/zh/notes/around-you/">
+  <meta property="og:image" content="https://www.ckin.cc/zh/notes/around-you/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="ckin">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="article:published_time" content="2026-11-04">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.ckin.cc/zh/notes/around-you/og.png">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.ckin.cc/zh/notes/around-you/">
+  <link rel="alternate" hreflang="en" href="https://www.ckin.cc/en/notes/around-you/">
+  <link rel="alternate" hreflang="x-default" href="https://www.ckin.cc/zh/notes/around-you/">
+  <link rel="canonical" href="https://www.ckin.cc/zh/notes/around-you/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#275913">
+  <meta name="apple-itunes-app" content="app-id=6829451051">
+  <link rel="stylesheet" href="/site.css?v=4">
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/"><img src="/icon.png" alt="" width="28" height="28">ckin</a>
+    <div class="links">
+      <a href="/zh/notes/">開發筆記</a>
+      <a href="/#how">怎麼打卡</a>
+      <a href="https://ckin.cc/taipei">小吃地圖</a>
+      <span class="lang"><a class="active" href="/zh/notes/around-you/">中文</a>|<a href="/en/notes/around-you/">EN</a></span>
+    </div>
+  </nav>
+  <main class="notes">
+    <a class="backlink" href="/zh/notes/">← 開發筆記</a>
+    <h1 class="title">打開就是你附近：ckin 1.0.1 和 1.0.2 的三個改進</h1>
+    <p class="meta">2026 年 11 月 · ckin 開發筆記 #2</p>
+    <p class="lead">這兩個版本改的，是打開 app 之後最先碰到的三件事：地圖從哪裡開始、打卡貼文在哪裡看，還有想去的地方附近有什麼。</p>
+    <article>
+      <div class="tldr">
+        <div class="label">TL;DR</div>
+        <ul>
+          <li><b>以你為中心：</b>打開 app，地圖就以你目前的位置為中心，周邊的打卡店家都在眼前。</li>
+          <li><b>貼文在 Threads 看：</b>看之前的打卡紀錄時，會直接切到 Threads app 打開那則貼文。</li>
+          <li><b>從 Google 地圖分享：</b>在 Google 地圖找到想去的地點，分享給 ckin，打開 ckin 就能看到那個地點附近的打卡店家。</li>
+          <li>這三項都在 ckin iOS 的 1.0.1 和 1.0.2 裡，更新到最新版就有。</li>
+        </ul>
+      </div>
+
+      <h2>打開就是你身邊</h2>
+      <p>ckin 是一張要人到現場才算數的地圖，所以最有用的起點，就是你現在站的地方。</p>
+      <p>現在打開 app，地圖會以你目前的位置為中心，周邊的打卡店家直接出現在眼前。紅色是還沒吃過的，綠色 ✓ 是你已經打過卡的。</p>
+      <figure class="fig anim fig-nearby" data-anim="nearby">
+        <svg viewBox="0 0 320 250" role="img" aria-labelledby="fig-nearby-t fig-nearby-d">
+          <title id="fig-nearby-t">打開 app，地圖以你的位置為中心</title>
+          <desc id="fig-nearby-d">手機畫面上先出現代表你的藍點，地圖從大範圍拉近到街區，接著周邊的打卡店家圖釘一個一個浮現。</desc>
+          <defs><clipPath id="n-scr"><rect x="19" y="11" width="118" height="228" rx="17"/></clipPath></defs>
+          <rect class="body" x="14" y="6" width="128" height="238" rx="22"/>
+          <g clip-path="url(#n-scr)">
+            <rect class="land" x="19" y="11" width="118" height="228"/>
+            <g transform="translate(78 132)">
+              <g class="zoom">
+                <rect class="land" x="-160" y="-320" width="320" height="600"/>
+                <rect class="park" x="18" y="-60" width="30" height="24" rx="3"/>
+                <rect class="park" x="-50" y="-115" width="26" height="20" rx="3"/>
+                <rect class="park" x="-120" y="150" width="60" height="40" rx="4"/>
+                <rect class="park" x="90" y="-230" width="50" height="40" rx="4"/>
+                <path class="water" d="M-160 60C-60 40 40 95 160 52"/>
+                <path class="road" d="M-160-78L160-88M-160 120L160 132M-62-320L-70 280M70-320L80 280M-160-190L160-200M-160 210L160 225M-130-320L-140 280M135-320L145 280M-160-270L160-280"/>
+                <path class="road major" d="M-160 22L160 6M10-320L-8 280"/>
+              </g>
+              <g transform="translate(-30 -30)"><g class="mk done" style="--d:2.9s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(32 -44)"><g class="mk" style="--d:3.1s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(-36 40)"><g class="mk" style="--d:3.3s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(40 24)"><g class="mk done" style="--d:3.5s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(6 -80)"><g class="mk" style="--d:3.7s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(10 88)"><g class="mk" style="--d:3.9s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <circle class="ring" r="8"/>
+              <g class="me"><circle class="me-o" r="7.5"/><circle class="me-i" r="5.5"/></g>
+            </g>
+          </g>
+          <rect class="island" x="60" y="17" width="36" height="9" rx="4.5"/>
+          <g class="st" style="--d:0s"><circle cx="160" cy="70" r="9"/><text class="n" x="160" y="74">1</text><text class="h" x="175" y="68">定位</text><text class="s" x="175" y="84">藍點就是你</text></g>
+          <g class="st" style="--d:0.9s"><circle cx="160" cy="125" r="9"/><text class="n" x="160" y="129">2</text><text class="h" x="175" y="123">放大</text><text class="s" x="175" y="139">從整區拉近到街口</text></g>
+          <g class="st" style="--d:2.9s"><circle cx="160" cy="180" r="9"/><text class="n" x="160" y="184">3</text><text class="h" x="175" y="178">附近店家</text><text class="s" x="175" y="194">打卡店家一一出現</text></g>
+        </svg>
+        <button class="replay" type="button" hidden>↻ 重播</button>
+        <figcaption>動畫示意：① 藍點出現在你目前的位置；② 地圖從大範圍拉近到街區；③ 周邊的打卡店家圖釘一個一個浮現，紅色是還沒吃過，綠色 ✓ 是吃過了。</figcaption>
+      </figure>
+      <p>下班路上、等朋友的空檔，打開看一眼，就知道走幾步路有哪一家。</p>
+
+      <h2>打卡紀錄，直接在 Threads 打開</h2>
+      <p>每一次打卡，都是你發在自己 Threads 上的一則貼文。</p>
+      <p>現在在 ckin 看之前的打卡紀錄時，點一下就會切到你手機上的 Threads app，直接打開那則貼文。貼文本來就在你的帳號裡，在 Threads 裡看，就是你平常看貼文的樣子。</p>
+      <figure class="fig anim fig-threads" data-anim="threads">
+        <svg viewBox="0 0 320 250" role="img" aria-labelledby="fig-threads-t fig-threads-d">
+          <title id="fig-threads-t">打卡紀錄直接在 Threads app 打開</title>
+          <desc id="fig-threads-d">ckin 的打卡紀錄裡有一則打卡，點一下之後，畫面滑到 Threads app，Threads 圖示出現，接著那則貼文在 Threads 裡打開。</desc>
+          <defs><clipPath id="t-scr"><rect x="19" y="11" width="118" height="228" rx="17"/></clipPath></defs>
+          <rect class="body" x="14" y="6" width="128" height="238" rx="22"/>
+          <g clip-path="url(#t-scr)">
+            <g class="t-app">
+              <rect class="cream" x="19" y="11" width="118" height="228"/>
+              <text class="ui" x="29" y="47">打卡紀錄</text>
+              <g transform="translate(78 90)"><g class="t-card">
+                <rect class="sheet" x="-51" y="-30" width="102" height="60" rx="10"/>
+                <circle class="av" cx="-38" cy="-16" r="6"/>
+                <rect class="bar dk" x="-27" y="-19" width="40" height="6" rx="3"/>
+                <g transform="translate(38 -2)"><g class="mk done"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+                <rect class="bar" x="-43" y="-2" width="70" height="5" rx="2.5"/>
+                <rect class="bar" x="-43" y="8" width="56" height="5" rx="2.5"/>
+                <rect class="bar link" x="-43" y="18" width="62" height="5" rx="2.5"/>
+              </g></g>
+              <rect class="sheet" x="27" y="128" width="102" height="46" rx="10"/>
+              <circle class="av" cx="40" cy="142" r="6"/>
+              <rect class="bar" x="51" y="139" width="44" height="6" rx="3"/>
+              <rect class="bar" x="35" y="156" width="80" height="5" rx="2.5"/>
+              <rect class="sheet" x="27" y="182" width="102" height="46" rx="10"/>
+              <circle class="av" cx="40" cy="196" r="6"/>
+              <rect class="bar" x="51" y="193" width="36" height="6" rx="3"/>
+              <rect class="bar" x="35" y="210" width="72" height="5" rx="2.5"/>
+            </g>
+            <g transform="translate(78 92)"><circle class="tap" style="--d:1s" r="14"/></g>
+            <g class="t-panel">
+              <rect class="paper" x="19" y="11" width="118" height="228"/>
+              <rect class="rule" x="19" y="58" width="118" height="1"/>
+              <g class="t-post">
+                <circle class="av" cx="33" cy="74" r="7"/>
+                <rect class="bar dk" x="45" y="70" width="38" height="6" rx="3"/>
+                <rect class="bar" x="88" y="70" width="16" height="6" rx="3"/>
+                <rect class="bar" x="45" y="84" width="80" height="5" rx="2.5"/>
+                <rect class="bar" x="45" y="94" width="62" height="5" rx="2.5"/>
+                <rect class="bar link" x="45" y="104" width="58" height="5" rx="2.5"/>
+                <rect class="photo" x="45" y="116" width="82" height="60" rx="8"/>
+                <path class="steam" d="M78 140c-3-5 3-7 0-12M86 140c-3-5 3-7 0-12M94 140c-3-5 3-7 0-12"/>
+                <path class="bowl" d="M62 145h48a24 16 0 0 1-48 0Z"/>
+                <path class="act" d="M50 194c-5-3.5-6-6-6-7.8 0-1.8 1.4-3.2 3-3.2 1.4 0 2.4.8 3 2 .6-1.2 1.6-2 3-2 1.6 0 3 1.4 3 3.2 0 1.8-1 4.3-6 7.8Z"/>
+                <circle class="act" cx="68" cy="189" r="5"/>
+                <path class="act" d="M81 187h9l-2.5-2.5M92 192h-9l2.5 2.5"/>
+                <path class="act" d="M99 184.5l9 4.5-9 4.5 2-4.5Z"/>
+                <rect class="rule" x="19" y="204" width="118" height="1"/>
+                <circle class="av" cx="33" cy="220" r="7"/>
+                <rect class="bar" x="45" y="216" width="46" height="6" rx="3"/>
+                <rect class="bar" x="45" y="228" width="74" height="5" rx="2.5"/>
+              </g>
+            </g>
+            <g transform="translate(78 42)"><g class="t-icon"><rect class="th-bg" x="-9" y="-9" width="18" height="18" rx="5"/><text class="th-at" x="0" y="4.5">@</text></g></g>
+          </g>
+          <rect class="island" x="60" y="17" width="36" height="9" rx="4.5"/>
+          <g class="st" style="--d:0s"><circle cx="160" cy="70" r="9"/><text class="n" x="160" y="74">1</text><text class="h" x="175" y="68">打卡紀錄</text><text class="s" x="175" y="84">找到之前那一則</text></g>
+          <g class="st" style="--d:1s"><circle cx="160" cy="125" r="9"/><text class="n" x="160" y="129">2</text><text class="h" x="175" y="123">點一下</text><text class="s" x="175" y="139">點開那則打卡</text></g>
+          <g class="st" style="--d:1.6s"><circle cx="160" cy="180" r="9"/><text class="n" x="160" y="184">3</text><text class="h" x="175" y="178">切到 Threads</text><text class="s" x="175" y="194">在 Threads app 打開</text></g>
+        </svg>
+        <button class="replay" type="button" hidden>↻ 重播</button>
+        <figcaption>動畫示意：① 打卡紀錄裡的一則打卡；② 點一下；③ 畫面切到 Threads app，打開那則貼文。圖中是簡化的示意，不是實際畫面。</figcaption>
+      </figure>
+
+      <h2>在 Google 地圖找到的地方，先看看附近</h2>
+      <p>很多人找地方用的是 Google 地圖。出門前查好要去的地點，順便也想知道那附近有什麼值得吃。</p>
+      <p>現在在 Google 地圖找到想去的地點，按分享，在分享選單裡選 ckin。之後打開 ckin，地圖會以那個地點為中心，那附近的打卡店家都在上面。</p>
+      <figure class="fig anim fig-share" data-anim="share">
+        <svg viewBox="0 0 320 268" role="img" aria-labelledby="fig-share-t fig-share-d">
+          <title id="fig-share-t">從 Google 地圖分享地點給 ckin</title>
+          <desc id="fig-share-d">Google 地圖的地點卡片上有一枚圖釘，按下分享後，一條虛線從分享按鈕連到 ckin 圖示，接著 ckin 的地圖打開，以那枚圖釘為中心，附近的打卡店家一一浮現。</desc>
+          <defs>
+            <clipPath id="s-card"><rect x="10" y="14" width="110" height="182" rx="14"/></clipPath>
+            <clipPath id="s-scr"><rect x="204" y="12" width="104" height="192" rx="15"/></clipPath>
+            <clipPath id="s-icc"><rect x="-16" y="-16" width="32" height="32" rx="7.2"/></clipPath>
+          </defs>
+          <g clip-path="url(#s-card)">
+            <rect class="gm-card" x="10" y="14" width="110" height="182"/>
+            <rect class="gm-land" x="10" y="14" width="110" height="112"/>
+            <rect class="gm-park" x="18" y="24" width="34" height="26" rx="3"/>
+            <path class="gm-water" d="M10 114C40 102 80 126 120 106"/>
+            <path class="gm-road" d="M10 66L120 58M44 14L52 126M86 14L94 126"/>
+            <path class="gm-road major" d="M10 92L120 80"/>
+            <g transform="translate(68 76)"><g class="gm-pin"><path class="hd" d="M0 0C-3-6-9-9-9-16A9 9 0 1 1 9-16C9-9 3-6 0 0Z"/><circle class="g2" cy="-16" r="3.4"/></g></g>
+            <rect class="bar dk" x="20" y="138" width="58" height="7" rx="3.5"/>
+            <rect class="bar" x="20" y="151" width="78" height="5" rx="2.5"/>
+            <rect class="gm-btn" x="20" y="172" width="34" height="14" rx="7"/>
+            <rect class="bar" x="59" y="172" width="22" height="14" rx="7"/>
+          </g>
+          <rect class="gm-edge" x="10" y="14" width="110" height="182" rx="14"/>
+          <g transform="translate(100 179)"><g class="s-btn"><circle r="10"/><path d="M0-5v7M-3-2.4l3-3 3 3M-4.5 0v4.5h9V0"/></g></g>
+          <g transform="translate(100 179)"><circle class="tap" style="--d:0.6s" r="12"/></g>
+          <circle class="s-dot" style="--d:1.35s" cx="122.3" cy="175.7" r="2"/>
+          <circle class="s-dot" style="--d:1.45s" cx="130.7" cy="172.4" r="2"/>
+          <circle class="s-dot" style="--d:1.55s" cx="138.0" cy="167.1" r="2"/>
+          <circle class="s-dot" style="--d:1.65s" cx="144.3" cy="159.7" r="2"/>
+          <circle class="s-dot" style="--d:1.75s" cx="149.6" cy="150.2" r="2"/>
+          <circle class="s-dot" style="--d:1.85s" cx="153.9" cy="138.8" r="2"/>
+          <circle class="s-dot" style="--d:1.95s" cx="157.2" cy="125.2" r="2"/>
+          <g transform="translate(160 96)"><g class="s-ic"><image href="/icon.png" x="-16" y="-16" width="32" height="32" clip-path="url(#s-icc)"/><rect class="ic-edge" x="-16" y="-16" width="32" height="32" rx="7.2"/></g></g>
+          <g transform="translate(160 96)"><circle class="tap" style="--d:2.25s" r="18"/></g>
+          <rect class="body" x="200" y="8" width="112" height="200" rx="19"/>
+          <g clip-path="url(#s-scr)">
+            <rect class="cream" x="204" y="12" width="104" height="192"/>
+            <g transform="translate(256 112)">
+              <g class="s-map">
+                <rect class="land" x="-70" y="-110" width="140" height="220"/>
+                <rect class="park" x="-56" y="-90" width="28" height="22" rx="3"/>
+                <path class="water" style="stroke-width:12" d="M-70 80C-20 66 20 96 70 74"/>
+                <path class="road" d="M-70-40L70-50M-20-110L-28 110"/>
+                <path class="road" style="stroke-width:7" d="M-70 30L70 40M34-110L40 110"/>
+              </g>
+              <g class="mk dest" style="--d:3.05s"><circle class="halo" r="12"/><path class="hd" d="M0 0C-3-6-9-9-9-16A9 9 0 1 1 9-16C9-9 3-6 0 0Z"/><circle class="g2" cy="-16" r="3.4"/></g>
+              <g transform="translate(-30 -40)"><g class="mk" style="--d:3.5s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(28 -56)"><g class="mk done" style="--d:3.65s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(-34 32)"><g class="mk done" style="--d:3.8s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(34 24)"><g class="mk" style="--d:3.95s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(-4 66)"><g class="mk" style="--d:4.1s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+            </g>
+          </g>
+          <rect class="island" x="241" y="17" width="30" height="8" rx="4"/>
+          <g class="st c" style="--d:0s"><circle cx="65" cy="222" r="9"/><text class="n" x="65" y="226">1</text><text class="h" x="65" y="246">分享地點</text><text class="s" x="65" y="262">在 Google 地圖</text></g>
+          <g class="st c" style="--d:1s"><circle cx="160" cy="222" r="9"/><text class="n" x="160" y="226">2</text><text class="h" x="160" y="246">選 ckin</text><text class="s" x="160" y="262">從分享選單</text></g>
+          <g class="st c" style="--d:2.6s"><circle cx="256" cy="222" r="9"/><text class="n" x="256" y="226">3</text><text class="h" x="256" y="246">看附近店家</text><text class="s" x="256" y="262">以那個地點為中心</text></g>
+        </svg>
+        <button class="replay" type="button" hidden>↻ 重播</button>
+        <figcaption>動畫示意：① 在 Google 地圖的地點卡片按分享；② 分享給 ckin；③ 打開 ckin，地圖以那個地點為中心，附近的打卡店家一一浮現。</figcaption>
+      </figure>
+      <p>分享過來的地點，只在你的手機上用來找出它的座標。</p>
+
+      <p class="pull">地圖從你身邊開始，<br>也可以從你想去的地方開始。</p>
+      <p>這三個改變都不大，目的是同一個：少滑一點地圖，多走幾步路，走進那家店。</p>
+      <p class="note-cta cta-row"><a class="cta" href="/#cities">看看開放的城市 →</a><a class="appstore" href="https://apps.apple.com/app/id6829451051"><img src="/appstore-badge-zh-tw.svg" alt="在 App Store 下載" width="131" height="48"></a></p>
+    </article>
+  </main>
+  <footer>
+    <div><a href="/zh/notes/">開發筆記</a> · <a href="/">首頁</a> · <a href="/privacy/">隱私權政策</a></div>
+    <div>© 2026 ckin</div>
+  </footer>
+  <script>
+    (function () {
+      if (!window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var d = document, figs = [].slice.call(d.querySelectorAll('.fig.anim'));
+      d.documentElement.classList.add('js');
+      function play(f) { f.classList.add('reset'); void f.getBoundingClientRect(); f.classList.remove('reset'); f.classList.add('go'); }
+      figs.forEach(function (f) {
+        var b = f.querySelector('.replay');
+        b.hidden = false;
+        b.addEventListener('click', function () { play(f); });
+      });
+      if (!('IntersectionObserver' in window)) { figs.forEach(play); return; }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('go'); io.unobserve(e.target); } });
+      }, { threshold: 0.45 });
+      figs.forEach(function (f) { io.observe(f); });
+    })();
+  </script>
+</body>
+</html>

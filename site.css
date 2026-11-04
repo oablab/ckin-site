@@ -268,3 +268,121 @@ article figure { margin: 0 0 1.8rem; }
 article figure.hero-photo { margin: 0.4rem 0 2rem; }
 article figure img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); display: block; }
 article figcaption { color: var(--muted); font-size: 0.88rem; margin-top: 0.6rem; text-align: center; }
+
+/* Dev-note TL;DR block */
+article .tldr { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 14px; padding: 1rem 1.3rem 1.1rem; margin: 1.6rem 0 2rem; }
+.tldr .label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; color: var(--accent-deep); }
+.tldr ul { margin: 0.5rem 0 0; padding-left: 1.1rem; }
+.tldr li { margin: 0.45rem 0; font-size: 0.98rem; }
+.tldr li:last-child { margin-bottom: 0; }
+
+/* Dev-note animated figures (inline SVG + CSS keyframes, no library).
+   Every element's base style is the final frame; keyframes only describe how it gets there
+   (`from` / early stops with fill-mode both). So no JS, or prefers-reduced-motion, shows the
+   finished picture. With JS, html.js pauses a figure until it scrolls into view (.go), and the
+   replay button restarts it via .reset. Each figure plays once, under 5 s. */
+.fig { margin: 1.6rem 0 2rem; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 0.9rem 0.6rem 0.8rem; }
+.fig svg { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto; overflow: hidden; }
+.fig figcaption { text-align: left; line-height: 1.65; margin: 0.7rem 0.5rem 0; }
+.fig .replay {
+  display: block; margin: 0.5rem 0.5rem 0 auto; font: inherit; font-size: 0.8rem; font-weight: 700; color: var(--accent-deep);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 0.2rem 0.8rem; cursor: pointer;
+}
+.fig .replay[hidden] { display: none; }
+.fig text { fill: var(--ink); font-size: 12px; }
+.fig .st circle { fill: var(--accent-tint); stroke: var(--accent); }
+.fig .st .n { fill: var(--accent-deep); font-size: 11px; font-weight: 800; text-anchor: middle; }
+.fig .st .h { font-size: 12.5px; font-weight: 800; }
+.fig .st .s { fill: var(--muted); font-size: 11px; }
+.fig .st.c text { text-anchor: middle; }
+/* phone and map pieces: the screen is app UI, so it keeps light colours in dark mode */
+.fig .body { fill: #1c1e22; stroke: #3a3d44; }
+.fig .island { fill: #1c1e22; }
+.fig .land { fill: #EEF1E8; }
+.fig .park { fill: #D6E5C3; }
+.fig .water { fill: none; stroke: #BFD9EA; stroke-width: 16; }
+.fig .road { fill: none; stroke: #fff; stroke-width: 5; stroke-linecap: round; }
+.fig .road.major { stroke-width: 9; }
+.fig .cream { fill: #FAF6F0; }
+.fig .paper { fill: #fff; }
+.fig .sheet { fill: #fff; stroke: rgba(43, 31, 20, 0.12); }
+.fig .bar { fill: #DDD5CB; }
+.fig .bar.dk { fill: #75655A; }
+.fig .bar.link { fill: #1d64d8; opacity: 0.75; }
+.fig .av { fill: #9caf88; }
+.fig text.ui { fill: #2B1F14; font-size: 11px; font-weight: 800; }
+.fig .mk { --c: #dc2626; }
+.fig .mk.done { --c: #15803d; }
+.fig .mk .hd { fill: var(--c); stroke: rgba(0, 0, 0, 0.18); }
+.fig .mk .g { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fig .mk .g2 { fill: #fff; }
+.fig .ring { fill: #0A84FF; opacity: 0; }
+.fig .me-o { fill: #fff; }
+.fig .me-i { fill: #0A84FF; }
+.fig .tap { fill: #2B1F14; opacity: 0; }
+.fig .th-bg { fill: #000; }
+.fig .th-at { fill: #fff; font-size: 13px; font-weight: 800; text-anchor: middle; }
+.fig .rule { fill: #ECE7E1; }
+.fig .photo { fill: #EFE7DB; }
+.fig .bowl { fill: #C9A27A; }
+.fig .steam, .fig .act { fill: none; stroke: #B7A796; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.fig .act { stroke: #2B1F14; stroke-width: 1.4; }
+.fig .gm-card { fill: #fff; }
+.fig .gm-edge { fill: none; stroke: var(--border); }
+.fig .gm-land { fill: #E8EAED; }
+.fig .gm-park { fill: #CDE8C9; }
+.fig .gm-water { fill: none; stroke: #AAD3DF; stroke-width: 14; }
+.fig .gm-road { fill: none; stroke: #fff; stroke-width: 6; stroke-linecap: round; }
+.fig .gm-road.major { stroke: #F8D57E; stroke-width: 7; }
+.fig .gm-pin .hd, .fig .mk.dest .hd { fill: #EA4335; stroke: rgba(0, 0, 0, 0.15); }
+.fig .gm-pin .g2, .fig .mk.dest .g2 { fill: #A50E0E; }
+.fig .mk.dest .halo { fill: #EA4335; opacity: 0.18; }
+.fig .gm-btn { fill: #1a73e8; }
+.fig .s-btn circle { fill: #E8F0FE; }
+.fig .s-btn path { fill: none; stroke: #1a73e8; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.fig .s-dot { fill: var(--accent); }
+.fig .ic-edge { fill: none; stroke: rgba(0, 0, 0, 0.15); }
+/* motion: transforms scale about each element's local origin (wrappers translate it into place) */
+.fig .zoom, .fig .me, .fig .ring, .fig .mk, .fig .tap, .fig .t-card, .fig .t-icon, .fig .s-btn, .fig .s-ic, .fig .s-map { transform-origin: 0 0; }
+.fig .st { animation: fig-st 0.35s ease var(--d, 0s) both; }
+@keyframes fig-st { from { opacity: 0.3; } }
+.fig .mk { animation: fig-drop 0.5s cubic-bezier(0.3, 1.4, 0.6, 1) var(--d, 0s) both; }
+@keyframes fig-drop { from { opacity: 0; transform: translateY(-10px) scale(0.5); } }
+.fig .tap { animation: fig-tap 0.55s ease-out var(--d, 0s) both; }
+@keyframes fig-tap { 0% { opacity: 0; transform: scale(0.4); } 20% { opacity: 0.3; } 100% { opacity: 0; transform: scale(1.7); } }
+@keyframes fig-press { 0%, 100% { transform: none; } 50% { transform: scale(0.94); } }
+@keyframes fig-pop { from { opacity: 0; transform: scale(0); } }
+@keyframes fig-fade { from { opacity: 0; } }
+/* fig 1: open on your location */
+.fig .me { animation: fig-pop 0.45s cubic-bezier(0.3, 1.5, 0.6, 1) 0.15s both; }
+.fig .ring { animation: fig-ring 1.2s ease-out 0.5s 3 both; }
+@keyframes fig-ring { from { opacity: 0.45; transform: scale(1); } to { opacity: 0; transform: scale(3.4); } }
+.fig .zoom { animation: fig-zoom 1.8s cubic-bezier(0.45, 0, 0.2, 1) 0.9s both; }
+@keyframes fig-zoom { from { transform: scale(0.4); } }
+/* fig 2: past check-in opens in Threads */
+.fig .t-card { animation: fig-press 0.35s ease 1.05s both; }
+.fig .t-app { animation: t-out 0.55s cubic-bezier(0.4, 0, 0.2, 1) 1.55s both; }
+@keyframes t-out { from { transform: none; } to { transform: translateX(-40px); } }
+.fig .t-panel { animation: t-in 0.55s cubic-bezier(0.4, 0, 0.2, 1) 1.55s both; }
+@keyframes t-in { from { transform: translateX(120px); } }
+.fig .t-icon { animation: t-icon 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1.9s both; }
+@keyframes t-icon {
+  0% { opacity: 0; transform: translate(0, 72px) scale(1.4); }
+  25%, 55% { opacity: 1; transform: translate(0, 72px) scale(2.4); }
+  100% { opacity: 1; transform: none; }
+}
+.fig .t-post { animation: t-post 0.5s ease-out 3s both; }
+@keyframes t-post { from { opacity: 0; transform: translateY(14px); } }
+/* fig 3: share a place from Google Maps */
+.fig .s-btn { animation: fig-press 0.35s ease 0.65s both; }
+.fig .s-ic { animation: fig-pop 0.4s cubic-bezier(0.3, 1.5, 0.6, 1) 1s both, fig-press 0.35s ease 2.3s; }
+.fig .s-dot { animation: fig-fade 0.2s linear var(--d, 0s) both; }
+.fig .s-map { animation: s-open 0.55s cubic-bezier(0.3, 0, 0.2, 1) 2.6s both; }
+@keyframes s-open { from { opacity: 0; transform: scale(1.2); } }
+/* play only once in view, restart on replay, final frame for reduced motion */
+html.js .fig.anim:not(.go) * { animation-play-state: paused !important; }
+.fig.reset * { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .fig * { animation: none !important; }
+  .fig .replay { display: none; }
+}

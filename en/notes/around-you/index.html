@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open it where you are: three changes in ckin 1.0.1 and 1.0.2 — ckin dev notes</title>
+  <meta name="description" content="Three changes in ckin for iOS 1.0.1 and 1.0.2: the map opens centered on where you are, past check-ins open in the Threads app, and a place you share from Google Maps shows the check-in shops near it.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Open it where you are: three changes in ckin 1.0.1 and 1.0.2">
+  <meta property="og:description" content="A map centered on you, check-ins that open in Threads, and places shared from Google Maps with the check-in shops around them.">
+  <meta property="og:url" content="https://www.ckin.cc/en/notes/around-you/">
+  <meta property="og:image" content="https://www.ckin.cc/en/notes/around-you/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="ckin">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-11-04">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.ckin.cc/en/notes/around-you/og.png">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.ckin.cc/zh/notes/around-you/">
+  <link rel="alternate" hreflang="en" href="https://www.ckin.cc/en/notes/around-you/">
+  <link rel="alternate" hreflang="x-default" href="https://www.ckin.cc/zh/notes/around-you/">
+  <link rel="canonical" href="https://www.ckin.cc/en/notes/around-you/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#275913">
+  <meta name="apple-itunes-app" content="app-id=6829451051">
+  <link rel="stylesheet" href="/site.css?v=4">
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/en/"><img src="/icon.png" alt="" width="28" height="28">ckin</a>
+    <div class="links">
+      <a href="/zh/notes/">Notes</a>
+      <a href="/en/#how">How it works</a>
+      <a href="/en/#cities">Cities</a>
+      <span class="lang"><a href="/zh/notes/around-you/">中文</a>|<a class="active" href="/en/notes/around-you/">EN</a></span>
+    </div>
+  </nav>
+  <main class="notes">
+    <a class="backlink" href="/zh/notes/">← Dev notes</a>
+    <h1 class="title">Open it where you are: three changes in ckin 1.0.1 and 1.0.2</h1>
+    <p class="meta">November 2026 · ckin dev notes #2</p>
+    <p class="lead">These two versions change three things you meet right after opening the app: where the map starts, where your check-in posts open, and what is near the place you plan to go.</p>
+    <article>
+      <div class="tldr">
+        <div class="label">TL;DR</div>
+        <ul>
+          <li><b>Centered on you:</b> open the app and the map is centered on where you are, with the check-in shops around you in view.</li>
+          <li><b>Posts open in Threads:</b> when you look at an earlier check-in, ckin switches to the Threads app and opens that post.</li>
+          <li><b>Share from Google Maps:</b> find a place in Google Maps, share it to ckin, then open ckin to see the check-in shops near that place.</li>
+          <li>All three are in ckin for iOS 1.0.1 and 1.0.2. Update to the latest version to get them.</li>
+        </ul>
+      </div>
+
+      <h2>The map opens where you are</h2>
+      <p>On ckin a check-in only counts if you were there, so the most useful place for the map to start is where you are standing.</p>
+      <p>Now the map opens centered on your current location, with the check-in shops nearby already on screen. Red pins are shops you have not eaten at yet; a green ✓ means you have checked in there.</p>
+      <figure class="fig anim fig-nearby" data-anim="nearby">
+        <svg viewBox="0 0 320 250" role="img" aria-labelledby="fig-nearby-t fig-nearby-d">
+          <title id="fig-nearby-t">The app opens with the map centered on you</title>
+          <desc id="fig-nearby-d">A blue dot for your location appears on the phone screen, the map zooms in from a wide view to street level, and then the pins of nearby check-in shops fade in one by one.</desc>
+          <defs><clipPath id="n-scr"><rect x="19" y="11" width="118" height="228" rx="17"/></clipPath></defs>
+          <rect class="body" x="14" y="6" width="128" height="238" rx="22"/>
+          <g clip-path="url(#n-scr)">
+            <rect class="land" x="19" y="11" width="118" height="228"/>
+            <g transform="translate(78 132)">
+              <g class="zoom">
+                <rect class="land" x="-160" y="-320" width="320" height="600"/>
+                <rect class="park" x="18" y="-60" width="30" height="24" rx="3"/>
+                <rect class="park" x="-50" y="-115" width="26" height="20" rx="3"/>
+                <rect class="park" x="-120" y="150" width="60" height="40" rx="4"/>
+                <rect class="park" x="90" y="-230" width="50" height="40" rx="4"/>
+                <path class="water" d="M-160 60C-60 40 40 95 160 52"/>
+                <path class="road" d="M-160-78L160-88M-160 120L160 132M-62-320L-70 280M70-320L80 280M-160-190L160-200M-160 210L160 225M-130-320L-140 280M135-320L145 280M-160-270L160-280"/>
+                <path class="road major" d="M-160 22L160 6M10-320L-8 280"/>
+              </g>
+              <g transform="translate(-30 -30)"><g class="mk done" style="--d:2.9s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(32 -44)"><g class="mk" style="--d:3.1s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(-36 40)"><g class="mk" style="--d:3.3s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(40 24)"><g class="mk done" style="--d:3.5s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(6 -80)"><g class="mk" style="--d:3.7s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(10 88)"><g class="mk" style="--d:3.9s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <circle class="ring" r="8"/>
+              <g class="me"><circle class="me-o" r="7.5"/><circle class="me-i" r="5.5"/></g>
+            </g>
+          </g>
+          <rect class="island" x="60" y="17" width="36" height="9" rx="4.5"/>
+          <g class="st" style="--d:0s"><circle cx="160" cy="70" r="9"/><text class="n" x="160" y="74">1</text><text class="h" x="175" y="68">Locate</text><text class="s" x="175" y="84">the blue dot is you</text></g>
+          <g class="st" style="--d:0.9s"><circle cx="160" cy="125" r="9"/><text class="n" x="160" y="129">2</text><text class="h" x="175" y="123">Zoom in</text><text class="s" x="175" y="139">down to street level</text></g>
+          <g class="st" style="--d:2.9s"><circle cx="160" cy="180" r="9"/><text class="n" x="160" y="184">3</text><text class="h" x="175" y="178">Nearby shops</text><text class="s" x="175" y="194">shop pins appear</text></g>
+        </svg>
+        <button class="replay" type="button" hidden>↻ Replay</button>
+        <figcaption>Animation: (1) a blue dot appears at your current location; (2) the map zooms in from a wide view to street level; (3) the pins of nearby check-in shops fade in, red for not yet, green ✓ for eaten.</figcaption>
+      </figure>
+      <p>On the way home, or while you wait for a friend, one look tells you which shop is a short walk away.</p>
+
+      <h2>Past check-ins open in Threads</h2>
+      <p>Every check-in is a post on your own Threads.</p>
+      <p>Now, when you look at an earlier check-in in ckin, one tap switches to the Threads app on your phone and opens that post. The post is already on your account, so you read it in Threads the way you read any other post.</p>
+      <figure class="fig anim fig-threads" data-anim="threads">
+        <svg viewBox="0 0 320 250" role="img" aria-labelledby="fig-threads-t fig-threads-d">
+          <title id="fig-threads-t">A past check-in opens in the Threads app</title>
+          <desc id="fig-threads-d">A check-in card in ckin is tapped, the screen slides over to the Threads app, the Threads icon appears, and then the post opens in Threads.</desc>
+          <defs><clipPath id="t-scr"><rect x="19" y="11" width="118" height="228" rx="17"/></clipPath></defs>
+          <rect class="body" x="14" y="6" width="128" height="238" rx="22"/>
+          <g clip-path="url(#t-scr)">
+            <g class="t-app">
+              <rect class="cream" x="19" y="11" width="118" height="228"/>
+              <text class="ui" x="29" y="47">Check-ins</text>
+              <g transform="translate(78 90)"><g class="t-card">
+                <rect class="sheet" x="-51" y="-30" width="102" height="60" rx="10"/>
+                <circle class="av" cx="-38" cy="-16" r="6"/>
+                <rect class="bar dk" x="-27" y="-19" width="40" height="6" rx="3"/>
+                <g transform="translate(38 -2)"><g class="mk done"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+                <rect class="bar" x="-43" y="-2" width="70" height="5" rx="2.5"/>
+                <rect class="bar" x="-43" y="8" width="56" height="5" rx="2.5"/>
+                <rect class="bar link" x="-43" y="18" width="62" height="5" rx="2.5"/>
+              </g></g>
+              <rect class="sheet" x="27" y="128" width="102" height="46" rx="10"/>
+              <circle class="av" cx="40" cy="142" r="6"/>
+              <rect class="bar" x="51" y="139" width="44" height="6" rx="3"/>
+              <rect class="bar" x="35" y="156" width="80" height="5" rx="2.5"/>
+              <rect class="sheet" x="27" y="182" width="102" height="46" rx="10"/>
+              <circle class="av" cx="40" cy="196" r="6"/>
+              <rect class="bar" x="51" y="193" width="36" height="6" rx="3"/>
+              <rect class="bar" x="35" y="210" width="72" height="5" rx="2.5"/>
+            </g>
+            <g transform="translate(78 92)"><circle class="tap" style="--d:1s" r="14"/></g>
+            <g class="t-panel">
+              <rect class="paper" x="19" y="11" width="118" height="228"/>
+              <rect class="rule" x="19" y="58" width="118" height="1"/>
+              <g class="t-post">
+                <circle class="av" cx="33" cy="74" r="7"/>
+                <rect class="bar dk" x="45" y="70" width="38" height="6" rx="3"/>
+                <rect class="bar" x="88" y="70" width="16" height="6" rx="3"/>
+                <rect class="bar" x="45" y="84" width="80" height="5" rx="2.5"/>
+                <rect class="bar" x="45" y="94" width="62" height="5" rx="2.5"/>
+                <rect class="bar link" x="45" y="104" width="58" height="5" rx="2.5"/>
+                <rect class="photo" x="45" y="116" width="82" height="60" rx="8"/>
+                <path class="steam" d="M78 140c-3-5 3-7 0-12M86 140c-3-5 3-7 0-12M94 140c-3-5 3-7 0-12"/>
+                <path class="bowl" d="M62 145h48a24 16 0 0 1-48 0Z"/>
+                <path class="act" d="M50 194c-5-3.5-6-6-6-7.8 0-1.8 1.4-3.2 3-3.2 1.4 0 2.4.8 3 2 .6-1.2 1.6-2 3-2 1.6 0 3 1.4 3 3.2 0 1.8-1 4.3-6 7.8Z"/>
+                <circle class="act" cx="68" cy="189" r="5"/>
+                <path class="act" d="M81 187h9l-2.5-2.5M92 192h-9l2.5 2.5"/>
+                <path class="act" d="M99 184.5l9 4.5-9 4.5 2-4.5Z"/>
+                <rect class="rule" x="19" y="204" width="118" height="1"/>
+                <circle class="av" cx="33" cy="220" r="7"/>
+                <rect class="bar" x="45" y="216" width="46" height="6" rx="3"/>
+                <rect class="bar" x="45" y="228" width="74" height="5" rx="2.5"/>
+              </g>
+            </g>
+            <g transform="translate(78 42)"><g class="t-icon"><rect class="th-bg" x="-9" y="-9" width="18" height="18" rx="5"/><text class="th-at" x="0" y="4.5">@</text></g></g>
+          </g>
+          <rect class="island" x="60" y="17" width="36" height="9" rx="4.5"/>
+          <g class="st" style="--d:0s"><circle cx="160" cy="70" r="9"/><text class="n" x="160" y="74">1</text><text class="h" x="175" y="68">Your check-ins</text><text class="s" x="175" y="84">find an earlier one</text></g>
+          <g class="st" style="--d:1s"><circle cx="160" cy="125" r="9"/><text class="n" x="160" y="129">2</text><text class="h" x="175" y="123">Tap it</text><text class="s" x="175" y="139">on the check-in card</text></g>
+          <g class="st" style="--d:1.6s"><circle cx="160" cy="180" r="9"/><text class="n" x="160" y="184">3</text><text class="h" x="175" y="178">Opens in Threads</text><text class="s" x="175" y="194">in the Threads app</text></g>
+        </svg>
+        <button class="replay" type="button" hidden>↻ Replay</button>
+        <figcaption>Animation: (1) a check-in in your history; (2) a tap; (3) the screen switches to the Threads app and opens the post. A simplified sketch, not real screens.</figcaption>
+      </figure>
+
+      <h2>Share a place from Google Maps</h2>
+      <p>Many people plan where to go in Google Maps, and before heading out it helps to know what is worth eating near there.</p>
+      <p>Now you can find the place in Google Maps, tap Share, and pick ckin in the share sheet. Open ckin and the map is centered on that place, with the check-in shops around it.</p>
+      <figure class="fig anim fig-share" data-anim="share">
+        <svg viewBox="0 0 320 268" role="img" aria-labelledby="fig-share-t fig-share-d">
+          <title id="fig-share-t">Share a place from Google Maps to ckin</title>
+          <desc id="fig-share-d">A place card in Google Maps shows a pin. After a tap on Share, a dotted path runs from the share button to the ckin icon, then the ckin map opens centered on that pin and nearby check-in shops fade in.</desc>
+          <defs>
+            <clipPath id="s-card"><rect x="10" y="14" width="110" height="182" rx="14"/></clipPath>
+            <clipPath id="s-scr"><rect x="204" y="12" width="104" height="192" rx="15"/></clipPath>
+            <clipPath id="s-icc"><rect x="-16" y="-16" width="32" height="32" rx="7.2"/></clipPath>
+          </defs>
+          <g clip-path="url(#s-card)">
+            <rect class="gm-card" x="10" y="14" width="110" height="182"/>
+            <rect class="gm-land" x="10" y="14" width="110" height="112"/>
+            <rect class="gm-park" x="18" y="24" width="34" height="26" rx="3"/>
+            <path class="gm-water" d="M10 114C40 102 80 126 120 106"/>
+            <path class="gm-road" d="M10 66L120 58M44 14L52 126M86 14L94 126"/>
+            <path class="gm-road major" d="M10 92L120 80"/>
+            <g transform="translate(68 76)"><g class="gm-pin"><path class="hd" d="M0 0C-3-6-9-9-9-16A9 9 0 1 1 9-16C9-9 3-6 0 0Z"/><circle class="g2" cy="-16" r="3.4"/></g></g>
+            <rect class="bar dk" x="20" y="138" width="58" height="7" rx="3.5"/>
+            <rect class="bar" x="20" y="151" width="78" height="5" rx="2.5"/>
+            <rect class="gm-btn" x="20" y="172" width="34" height="14" rx="7"/>
+            <rect class="bar" x="59" y="172" width="22" height="14" rx="7"/>
+          </g>
+          <rect class="gm-edge" x="10" y="14" width="110" height="182" rx="14"/>
+          <g transform="translate(100 179)"><g class="s-btn"><circle r="10"/><path d="M0-5v7M-3-2.4l3-3 3 3M-4.5 0v4.5h9V0"/></g></g>
+          <g transform="translate(100 179)"><circle class="tap" style="--d:0.6s" r="12"/></g>
+          <circle class="s-dot" style="--d:1.35s" cx="122.3" cy="175.7" r="2"/>
+          <circle class="s-dot" style="--d:1.45s" cx="130.7" cy="172.4" r="2"/>
+          <circle class="s-dot" style="--d:1.55s" cx="138.0" cy="167.1" r="2"/>
+          <circle class="s-dot" style="--d:1.65s" cx="144.3" cy="159.7" r="2"/>
+          <circle class="s-dot" style="--d:1.75s" cx="149.6" cy="150.2" r="2"/>
+          <circle class="s-dot" style="--d:1.85s" cx="153.9" cy="138.8" r="2"/>
+          <circle class="s-dot" style="--d:1.95s" cx="157.2" cy="125.2" r="2"/>
+          <g transform="translate(160 96)"><g class="s-ic"><image href="/icon.png" x="-16" y="-16" width="32" height="32" clip-path="url(#s-icc)"/><rect class="ic-edge" x="-16" y="-16" width="32" height="32" rx="7.2"/></g></g>
+          <g transform="translate(160 96)"><circle class="tap" style="--d:2.25s" r="18"/></g>
+          <rect class="body" x="200" y="8" width="112" height="200" rx="19"/>
+          <g clip-path="url(#s-scr)">
+            <rect class="cream" x="204" y="12" width="104" height="192"/>
+            <g transform="translate(256 112)">
+              <g class="s-map">
+                <rect class="land" x="-70" y="-110" width="140" height="220"/>
+                <rect class="park" x="-56" y="-90" width="28" height="22" rx="3"/>
+                <path class="water" style="stroke-width:12" d="M-70 80C-20 66 20 96 70 74"/>
+                <path class="road" d="M-70-40L70-50M-20-110L-28 110"/>
+                <path class="road" style="stroke-width:7" d="M-70 30L70 40M34-110L40 110"/>
+              </g>
+              <g class="mk dest" style="--d:3.05s"><circle class="halo" r="12"/><path class="hd" d="M0 0C-3-6-9-9-9-16A9 9 0 1 1 9-16C9-9 3-6 0 0Z"/><circle class="g2" cy="-16" r="3.4"/></g>
+              <g transform="translate(-30 -40)"><g class="mk" style="--d:3.5s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(28 -56)"><g class="mk done" style="--d:3.65s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(-34 32)"><g class="mk done" style="--d:3.8s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><path class="g" d="M-3.5-14l2.5 2.5 4.5-5"/></g></g>
+              <g transform="translate(34 24)"><g class="mk" style="--d:3.95s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+              <g transform="translate(-4 66)"><g class="mk" style="--d:4.1s"><path class="hd" d="M0 0C-3-5-8-8-8-14A8 8 0 1 1 8-14C8-8 3-5 0 0Z"/><circle class="g2" cy="-14" r="2.8"/></g></g>
+            </g>
+          </g>
+          <rect class="island" x="241" y="17" width="30" height="8" rx="4"/>
+          <g class="st c" style="--d:0s"><circle cx="65" cy="222" r="9"/><text class="n" x="65" y="226">1</text><text class="h" x="65" y="246">Share</text><text class="s" x="65" y="262">from Google Maps</text></g>
+          <g class="st c" style="--d:1s"><circle cx="160" cy="222" r="9"/><text class="n" x="160" y="226">2</text><text class="h" x="160" y="246">Pick ckin</text><text class="s" x="160" y="262">share sheet</text></g>
+          <g class="st c" style="--d:2.6s"><circle cx="256" cy="222" r="9"/><text class="n" x="256" y="226">3</text><text class="h" x="256" y="246">See what&#39;s near</text><text class="s" x="256" y="262">around that place</text></g>
+        </svg>
+        <button class="replay" type="button" hidden>↻ Replay</button>
+        <figcaption>Animation: (1) tap Share on a place card in Google Maps; (2) share it to ckin; (3) open ckin, and the map is centered on that place while nearby check-in shops fade in.</figcaption>
+      </figure>
+      <p>The place you share is used only on your phone, to find its coordinates.</p>
+
+      <p class="pull">The map starts where you are,<br>or where you are about to go.</p>
+      <p>None of these changes is big. They share one aim: a little less scrolling around the map, and a few more steps into the shop.</p>
+      <p class="note-cta cta-row"><a class="cta" href="/en/#cities">See the cities →</a><a class="appstore" href="https://apps.apple.com/app/id6829451051"><img src="/appstore-badge-en.svg" alt="Download on the App Store" width="144" height="48"></a></p>
+    </article>
+  </main>
+  <footer>
+    <div><a href="/zh/notes/">Dev notes</a> · <a href="/en/">Home</a> · <a href="/privacy/">Privacy</a></div>
+    <div>© 2026 ckin</div>
+  </footer>
+  <script>
+    (function () {
+      if (!window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var d = document, figs = [].slice.call(d.querySelectorAll('.fig.anim'));
+      d.documentElement.classList.add('js');
+      function play(f) { f.classList.add('reset'); void f.getBoundingClientRect(); f.classList.remove('reset'); f.classList.add('go'); }
+      figs.forEach(function (f) {
+        var b = f.querySelector('.replay');
+        b.hidden = false;
+        b.addEventListener('click', function () { play(f); });
+      });
+      if (!('IntersectionObserver' in window)) { figs.forEach(play); return; }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('go'); io.unobserve(e.target); } });
+      }, { threshold: 0.45 });
+      figs.forEach(function (f) { io.observe(f); });
+    })();
+  </script>
+</body>
+</html>
